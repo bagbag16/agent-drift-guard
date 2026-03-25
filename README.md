@@ -2,6 +2,8 @@
 
 复杂多轮协作守卫。
 
+Lightweight guardrails for complex multi-turn AI collaboration.
+
 `align v2` 是一套给 AI 协作使用的轻量规则，专门解决复杂、多轮、易漂移任务中的几个常见问题：
 
 - 聊着聊着，目标变了
@@ -12,6 +14,99 @@
 
 它不是任务管理器，不是 agent 框架，也不是通用 prompt 模板。
 它更像一个 guardrail：在不把流程做重的前提下，稳住协作质量。
+
+## 中文简介
+
+`align v2` 是一个给 AI 协作用的轻量守卫层。
+
+它不是为了让 AI 说更多话，也不是为了把流程做得更重，而是为了减少复杂协作中最常见的几种失真：
+
+- 把假设写成结论
+- 把改写版当成用户原意
+- 长对话后目标和约束漂移
+- 重要状态只留在聊天里，后续无法稳定继承
+- 新信息已经影响旧结论，但没人回查
+
+它的核心思路是：
+
+- 默认轻量使用
+- 必要时外化高影响状态
+- 复杂场景再展开，而不是一开始就上重型流程
+
+## English Summary
+
+`align v2` is a lightweight guardrail layer for AI collaboration.
+
+It is designed for complex, multi-turn work where drift, hidden assumptions, and silent reinterpretation can easily break the collaboration.
+
+It focuses on a few practical protections:
+
+- keep confirmed facts, temporary assumptions, and unconfirmed items separate
+- avoid silently rewriting user intent into durable state
+- externalize high-impact state when later work depends on it
+- revisit older conclusions when new information changes them
+- keep progress moving without forcing heavy process on simple tasks
+
+## Quick Start
+
+You can start using `align v2` in under a minute.
+
+### 1. Tell the assistant the current task
+
+Example:
+
+> We are designing the approach first. Do not start implementation yet.
+
+### 2. Ask it to separate the current state
+
+Use this structure:
+
+- `confirmed`
+- `temporary assumptions`
+- `needs confirmation`
+- `out of scope for this step`
+
+### 3. Externalize only what later work will depend on
+
+If the task will continue across multiple rounds, capture only the minimum high-impact state:
+
+- `current-goal`
+- `confirmed-constraints`
+- `pending-items`
+- `decisions`
+
+### 4. Move forward with the smallest useful result
+
+Once the goal and constraints are stable enough, use the smallest next deliverable instead of over-planning.
+
+## Who Is This For
+
+`align v2` is for people who regularly work with AI on tasks that are:
+
+- multi-turn
+- easy to drift
+- full of implicit assumptions
+- likely to cross stages or sessions
+- dependent on stable goals, constraints, and decisions
+
+Good fits include:
+
+- long design discussions
+- framework or method design
+- system and tool planning
+- research and analysis that evolves over time
+- projects where wording, boundaries, and decisions really matter
+
+## Who This Is Not For
+
+`align v2` is probably unnecessary if you mostly do:
+
+- one-shot prompts
+- simple Q&A
+- quick code edits with no state carryover
+- tasks where you do not need to preserve decisions across rounds
+
+If your work is already well-covered by a simple `AGENTS.md` file and does not drift much, that may be enough.
 
 ## 它适合什么场景
 
