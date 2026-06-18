@@ -46,6 +46,12 @@ It also keeps a **lightweight sense of agency**: when your chosen approach is
 workable but a clearly better, lower-cost path exists, adg flags it — stating the
 limitation, the better path, and why — without rewriting your goal for you.
 
+## Using it
+
+adg is an installable skill, not a copy-paste prompt — install it once, then
+invoke it in any conversation by saying `adg` (or `agent-drift-guard`). See
+[SKILL.md](SKILL.md) for the install shape.
+
 ## When to use it — and when not to
 
 **Use adg** when a conversation runs several rounds, starts to drift, mixes goals
